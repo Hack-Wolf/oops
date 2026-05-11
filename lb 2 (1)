@@ -1,0 +1,142 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Welcome !! Choose the product of your choice");
+        System.out.println("1:Tiffin");
+        System.out.println("2:Waterbottle");
+        System.out.println("3:Bag");
+        System.out.println("4:Books");
+        int choice=sc.nextInt();
+        switch(choice){
+            case 1:
+                System.out.println("enter the product ID");
+                int a=sc.nextInt();
+                System.out.println("Product name :TIFFIN ");
+                System.out.println("PRICE: 150/-");
+                System.out.println("enter the no. of Tiffins");
+                 int t=sc.nextInt();
+                int ttotal=150*t;
+                System.out.println("The total for "+t+" is "+ttotal);
+                break;
+            case 2:
+                System.out.println("enter the product ID");
+                int b=sc.nextInt();
+                System.out.println("Product name :WATERBOTTLE ");
+                System.out.println("PRICE: 50/-");
+                System.out.println("enter the no. of Waterbottle");
+                 int w=sc.nextInt();
+                int wtotal=50*w;
+                System.out.println("The total for "+w+"waterbottle is "+wtotal);
+                break;
+            case 3:
+                System.out.println("enter the product ID");
+                int c=sc.nextInt();
+                System.out.println("Product name :BAG ");
+                System.out.println("PRICE: 500/-");
+                System.out.println("enter the no. of Bags");
+                 int g=sc.nextInt();
+                int btotal=500*g;
+                System.out.println("The total for "+g+" bags is "+btotal);
+                break;
+            case 4:
+                System.out.println("enter the product ID");
+                int d=sc.nextInt();
+                System.out.println("Product name :BOOKS ");
+                System.out.println("PRICE: 50/-");
+                System.out.println("enter the no. of Books");
+                 int k=sc.nextInt();
+                int ktotal=150*k;
+                System.out.println("The total for "+k+" books is "+ktotal);
+                break;
+            default:
+                System.out.println("INVALID CHOICE! Please enter a valid number (1-4).");
+                break;
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main (String[] args){
+        Scanner sc= new Scanner(System.in);
+        Product p;
+        int choice;
+        int totalBill=0;
+        do{
+        System.out.println("Welcome !! Choose the product of your choice");
+            System.out.println("1: Tiffin");
+            System.out.println("2: Waterbottle");
+            System.out.println("3: Bag");
+            System.out.println("4: Books");
+            System.out.println("5: Exit");
+            choice= sc.nextInt();
+            p 1 null;
+            if (choice == 5) {
+                System.out.println("Exiting...");
+                break;
+            }
+            switch(choice){
+                case 1:
+                    p = new Product ("Tiffin",20); break;
+                case 2 :
+                    p = new Product("Waterbottle",50);break;
+                case 3 :
+                    p = new Product("Bag",150);break;
+                case 4 :
+                    p = new Product("Books",5);break;
+                case 5 :
+                   System.out.println("Exiting...");break;
+                default:
+                    System.out.println("INVALID CHOICE!");
+                    continue;
+            }
+            System.out.println("Enter no. of products: "+p.name+" ");
+            int quantity =sc.nextInt();
+            int product_total=p.display(quantity);
+            totalBill+=product_total;
+        }while(true);
+        System.out.println("\n Total Bill for all products: " + totalBill);
+    }
+}
+class Product{
+    String name;
+    int price;
+    public Product(String name, int price){
+        this.name=name;
+        this.price=price;
+    }
+    
+    public int display (int quantity){
+        int t = quantity*price;
+        System.out.println("The total for " + quantity + " " +name+ " (s) is: "+t);
+        return t;
+    }
+}

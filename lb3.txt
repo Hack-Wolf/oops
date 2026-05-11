@@ -1,0 +1,42 @@
+import java.util.Scanner;
+class Main{
+     
+     public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+     System.out.println("Enter base: ");
+    int base = sc.nextInt();
+    System.out.println("Enter exp: ");
+     int exp = sc.nextInt();
+     power r=new power();
+    int result=r.pow(base, exp );
+    System.out.println(base+ " raised to " +exp+" is "+result);
+   
+     
+     System.out.println("Enter base (double): ");
+    double dbase = sc.nextDouble();
+    System.out.println("Enter exp(double): ");
+     double dexp = sc.nextDouble();
+     power d=new power();
+    double dresult=d.pow(dbase, dexp );
+    System.out.println(dbase+ " raised to " +dexp+" is "+dresult);
+   
+     System.out.println("Enter base(float): ");
+    float fbase = sc.nextFloat();
+    System.out.println("Enter exp: ");
+     float fexp = sc.nextFloat();
+     power f=new power();
+    float fresult=f.pow(fbase, fexp );
+    System.out.println(fbase+ " raised to " +fexp+" is "+fresult);
+ }
+}
+class power{
+     public int pow(int base, int exp) {
+     return (int) Math.pow(base, exp);
+     }
+    public double pow(double base, double exp) {
+    return (double) Math.pow(base, exp);
+     }
+    public float pow(float base, float exp) {
+    return (float) Math.pow(base, exp);
+     }
+ }
