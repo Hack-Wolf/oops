@@ -29,13 +29,13 @@ class Main{
         System.out.println("Minimum element = "+ min);
         System.out.println("Sum = "+ sum);
         System.out.println("Maximum element = "+ max);
-        double average = sum / size;
+        double average = (double)sum / size;
         System.out.println("Average = "+ average);
         System.out.println("Enter the element you want to search");
         int search = sc.nextInt();
         for (int i = 0 ; i< size; i++){
             if(array[i]==search){
-                System.out.println("Element found at position "+ array[i+1]);
+                System.out.println("Element found at position "+ i);
                 return;
             }
         }
