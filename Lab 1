@@ -1,4 +1,69 @@
 import java.util.Scanner;
+class Main{
+public static void main(String[] args){
+	Scanner sc = new Scanner(System.in);
+	double a, b;
+	System.out.println("Calculator\n");
+	try{
+	System.out.println("Enter first no.\n");
+	a=sc.nextDouble();
+	System.out.println("Enter second no. \n");
+	b=sc.nextDouble();
+	}
+	catch(Exception e){
+	    System.out.println("ERROR : Enter a valid numeric value");
+	    return;
+	}
+	
+	while(true){
+	    System.out.println("\nCalculator Main Menu \n 1:ADDITION \n 2:SUBTRACTION \n 3:MULTIPLICATION \n 4:DIVISION \n 5: MODULUS\n 6:EXIT\n ");
+	    System.out.println("Enter your choice");
+	    int c;
+	    try{
+	        c=sc.nextInt();
+	    }
+	    catch(Exception e){
+	        System.out.println("Enter a valid input choice");
+	        sc.next();
+	        continue;
+	    }
+	    try{
+	        switch(c){
+	            case 1 :
+	                System.out.println(a+b);
+	                break;
+	           case 2:
+	               System.out.println(a-b);
+	                break;
+	           case 3:
+	               System.out.println(a*b);
+	                break;
+	           case 4:
+	               System.out.println(a/b);
+	                break;
+	           case 5:
+	               System.out.println(a%b);
+	                break;
+	           case 6:
+	               System.out.println("Exiting...");
+	               System.exit(0);
+	                break;
+	           default:
+	                System.out.println("Invalid choice");
+	        }
+	        
+	    }
+	    catch(Exception e ){
+	            System.out.println("ERROR: Arithmetic error");
+	        }
+	}
+	}
+}
+
+
+
+
+import java.util.Scanner;
 class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
