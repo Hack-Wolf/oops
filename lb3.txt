@@ -40,3 +40,49 @@ class power{
     return (float) Math.pow(base, exp);
      }
  }
+
+
+
+//direct input
+import java.util.Scanner ;
+class Main{
+    public static void main(String [] args){
+        Scanner sc = new Scanner(System.in);
+        calculator power = new calculator();
+        calculator absolute = new calculator();
+        System.out.println("\n===== MATH CLASS DEMO =====");
+        System.out.println(power.pow(2,3));
+        System.out.println(power.pow(2.8,5.3));
+        System.out.println(absolute.abs(-6));
+        System.out.println(absolute.abs(-5.223));
+    }
+}
+class calculator{
+    int pow (int base , int exp){
+        System.out.println("int - int method power function : ");
+        return (int) Math.pow(base, exp);
+    }
+    double pow( double base , double exp){
+        System.out.println("Double double method power function: ");
+        return (double)Math.pow(base, exp);
+    }
+    int abs (int  n){
+        System.out.println("int method absolute function : ");
+            if(n < 0){
+                return -n; 
+            }
+            else {
+                return n;
+            }
+
+    }
+    double abs ( double n){
+        System.out.println("Double method absolute function: ");
+            if(n < 0){
+                return -n; 
+            }
+            else {
+                return n;
+            }
+}
+    }
