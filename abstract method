@@ -1,0 +1,81 @@
+abstract class Shape {
+    String color;
+
+    // Constructor
+    Shape(String color) {
+        this.color = color;
+    }
+
+    // Regular method
+    void displayColor() {
+        System.out.println("Color: " + color);
+    }
+
+    // Abstract methods
+    abstract double area();
+
+    abstract double perimeter();
+}
+
+// Circle class
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius, String color) {
+        super(color);
+        this.radius = radius;
+    }
+
+    @Override
+    double area() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    double perimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Rectangle class
+class Rectangle extends Shape {
+    double length, width;
+
+    Rectangle(double length, double width, String color) {
+        super(color);
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double area() {
+        return length * width;
+    }
+
+    @Override
+    double perimeter() {
+        return 2 * (length + width);
+    }
+}
+
+// Main class
+class Main {
+    public static void main(String[] args) {
+
+        Shape[] shape = new Shape[2];
+
+        shape[0] = new Circle(7, "Blue");
+        shape[1] = new Rectangle(4, 6, "Red");
+
+        for (int i = 0; i < shape.length; i++) {
+
+            shape[i].displayColor();
+
+            System.out.println("Area: " + shape[i].area());
+
+            System.out.println("Perimeter: " + shape[i].perimeter());
+
+            System.out.println();
+        }
+    }
+}
