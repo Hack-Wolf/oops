@@ -1,0 +1,95 @@
+import java.util.Scanner;
+class Main{
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    Product p ;
+    int choice;
+    int totalBill =0;
+    do{
+        System.out.println("Welcome!! Choose the product\n 1:Laptop \n 2:Bag \n 3:Tiffin \n 4:Books \n 5:Custom \n 6:Exit \n");
+        choice =sc.nextInt();
+        p =null;
+        if (choice==6) {
+            System.out.println("Exiting..");
+            break;
+        }
+        switch(choice){
+            case 1:
+                p= new Product("Laptop", 50000);
+                break;
+            case 2:
+                p= new Product("Bag", 1000);
+                break;
+            case 3:
+                p= new Product("Tiffin", 200);
+                break;
+            case 4:
+                p= new Product("Books", 500);
+                break;
+            case 5:
+                 System.out.println("Enter product name:");
+                 String customName = sc.next();
+                 System.out.println("Enter price:");
+                 int customPrice = sc.nextInt();
+                 p = new Product(customName, customPrice);
+                 break;
+            case 6:
+                System.out.println("Exiting....");
+                break;
+            default:
+                System.out.println("Invalid choice");
+                continue;
+        }
+        System.out.println("Enter the number of product " + p.name+"");
+        int quantity =sc.nextInt();
+        int product_total= p.display(quantity);
+        totalBill += product_total;
+    }while(true);
+    double discount = 0;
+    double finalBill = totalBill;
+
+    if(totalBill > 10000){
+       discount = totalBill * 0.10;
+    }
+   else if(totalBill >= 5000){
+       discount = totalBill * 0.05;
+    }
+   else{
+       discount = 0;
+   }
+    finalBill = totalBill - discount;
+
+System.out.println(" Print Invoice:");
+System.out.println("   ==============================");
+System.out.println("   Total Bill  :  "+ totalBill);
+System.out.println("   Discount    :  "+ discount);
+System.out.println("   Final Amount:  "+ finalBill);
+System.out.println("   ==============================");
+    
+}
+}
+
+class Product{
+    String name;
+    int price;
+    int quantity;
+    public Product(String name, int price){
+        this.name =name;
+        this.price =price;
+    }
+    Product() {
+     this.name = "Unknown";
+     this.price = 0;
+     this.quantity = 0;
+    }
+    Product(String name, int price, int quantity) {
+     this.name= name;
+     this.price= price;
+     this.quantity= quantity;
+    }
+    public int display(int quantity){
+        int t = quantity*price;
+        System.out.println("Total for " + quantity +" "+name+" s is "+t);
+        return t;
+    }
+}
