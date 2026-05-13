@@ -1,0 +1,99 @@
+class ChatUser extends Thread {
+
+    private String userName;
+    private volatile boolean paused = false;
+    private volatile boolean stopped = false;
+
+    ChatUser(String name, int priority) {
+        this.userName = name;
+        setPriority(priority);
+    }
+
+    synchronized void pauseChat() {
+        paused = true;
+    }
+
+    synchronized void resumeChat() {
+        paused = false;
+        notify();
+    }
+
+    void stopChat() {
+        stopped = true;
+    }
+
+    public void run() {
+
+        int msgCount = 1;
+
+        try {
+
+            while (!stopped && msgCount <= 5) {
+
+                synchronized (this) {
+                    while (paused) {
+                        wait();
+                    }
+                }
+
+                System.out.println(userName +
+                        " sending HIGH PRIORITY message "
+                        + msgCount);
+
+                msgCount++;
+
+                Thread.sleep(1000);
+            }
+
+        } catch (InterruptedException e) {
+            System.out.println(userName + " interrupted.");
+        }
+
+        System.out.println(userName + " chat ended.");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ChatUser user1 =
+                new ChatUser("Alice", Thread.NORM_PRIORITY);
+
+        ChatUser user2 =
+                new ChatUser("Bob", Thread.MAX_PRIORITY);
+
+        user1.start();
+        user2.start();
+
+        System.out.println("Is Alice alive? "
+                + user1.isAlive());
+
+        System.out.println("Is Bob alive? "
+                + user2.isAlive());
+
+        try {
+            Thread.sleep(2000);
+
+            System.out.println("\nPausing Bob...\n");
+            user2.pauseChat();
+
+            Thread.sleep(2000);
+            System.out.println("\nResuming Bob...\n");
+            user2.resumeChat();
+
+            Thread.sleep(2000);
+            System.out.println("\nStopping Alice...\n");
+            user1.stopChat();
+
+            
+            user1.join();
+            user2.join();
+
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted.");
+        }
+
+        System.out.println("\nChat system terminated.");
+    }
+}
